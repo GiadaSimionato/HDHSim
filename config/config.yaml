@@ -1,0 +1,121 @@
+max_ticks: 1000
+record: False
+delete_recording: False
+headless: False
+
+network:
+  x_limits: [0, 400]
+  y_limits: [0, 400]
+  n_nodes: 150
+  rs_nodes: 30
+  n_iter: 1000
+  th_inner: 7
+  epsilon: 0.1
+
+scenario:
+  ntb: [7]
+
+init:
+  agents:
+    margin: [50, 50]
+    nests: 1
+    nest:
+      agents: 50
+      std: 2
+
+params:
+  rs: [30, 10]
+  rc: [62, 62]
+  fault_perc: 0.0
+  th_c : 0.95
+  th_turn: 0.0872
+  th_bound: 0.3
+  th_approach: 1
+  th_metric: 0.95
+  steering_speed_cruise : 0.1
+  driving_speed_cruise: 5
+  dt: 1
+  policy: closest
+  errors:
+    rab_dist_more: 0.015
+    rab_angle: 0.0872665
+    n_rep: 1
+
+world:
+  size: [1000, 1000]
+  margin: [100, 100]
+  fps: 30
+  background: "black"
+
+render:
+  agent:
+    width: 10
+    height: 15
+    colors:
+      idle: red
+      bound: red
+      bounding: green
+      bound-commit: yellow
+      active: white
+      exit: white
+      fault: yellow
+      levels:
+        - "#FF0000"
+        - "#FF8000"
+        - "#FFFF00"
+        - "#80FF00"
+        - "#00FF00"
+        - "#00FF80"
+        - "#00FFFF"
+        - "#0080FF"
+        - "#0000FF"
+        - red
+
+    show_level: True
+    show_communication_radius: False
+    show_perceive_radius: True
+    show_connections: False
+  
+  node:
+    size: 5
+    colors:
+      fault: red
+      intact: green
+      boundary: white
+      levels:
+        - "#FF0000"
+        - "#FF8000"
+        - "#FFFF00"
+        - "#80FF00"
+        - "#00FF00"
+        - "#00FF80"
+        - "#00FFFF"
+        - "#0080FF"
+        - "#0000FF"
+        - red
+
+    show_level: True
+    show_communication_radius: False
+    show_perceive_radius: True
+    show_connections: False
+
+clearml:
+  project: giada-drones
+  task: giada-drones-training
+  output_uri: <INSERT CREDENTIALS>
+  media_uri: <INSERT CREDENTIALS>
+  tags: ""
+  newtask: False
+
+log:
+  stdout: False
+  clearml: False
+
+defaults:
+  - override hydra/hydra_logging: disabled  
+  - override hydra/job_logging: disabled 
+
+hydra:
+  output_subdir: null  
+  run:  
+    dir: .
