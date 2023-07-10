@@ -107,7 +107,7 @@ def agent_logic(node):
             border_readings = readings[np.logical_not(np.logical_and(readings[:,1]==1, readings[:,2]!=2))] # filter readings for only nodes or agents bound
             lev_zero = border_readings[border_readings[:,3]==0]  # filter readings for only level=0
             if(len(lev_zero)>1): # if enough readings for computing boundary solutions
-                t, nt = computeTarget(node, params.policy)
+                t, nt = computeTarget(node, readings, params.policy)
                 if(len(t)!=0):  # a solution was found
                     if(t[0]<=params.th_bound):  # if close enough to target, then switch state to bound
                         node.state = 2

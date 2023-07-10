@@ -13,7 +13,7 @@ By default, HDHSim runs the algorithm described in Simionato G. et al., [2023] (
 ## Installation
 1. Clone the repository
 ```
-git clone https://github.com/GiadaSimionato/platelets2023.git
+git clone git@github.com:GiadaSimionato/HDHSim.git
 ```
 2. Install the requirements
 ```
@@ -33,7 +33,7 @@ pip install -r requirements.txt
 
 ### How to costumize the scenario
 
-To customize the scenario, set the number of nodes of the original network and their sensing range at `config.yaml/network/n_nodes` and `config.yaml/network/rs_nodes`. The number and size of holes must be set using `config.yaml/scenario/ntb`. E.g., ntb = [3,5,4] represents three holes in the network caused by 3, 5 and 4 faulty nodes.
+To customize the scenario, set the number of nodes of the original network and their sensing range at `config.yaml/network/n_nodes` and `config.yaml/network/rs_nodes`. The number and size of holes must be set using `config.yaml/scenario/ntb`. E.g. ntb = [3,5,4] represents three holes in the network caused by 3, 5 and 4 faulty nodes.
 The number of release points (RPs) must be specified at `config.yaml/init/agents/nests` while the number of agents per RP at `config.yaml/init/agents/nest/agents`.
 
 ### How to costumize the logic
@@ -41,7 +41,7 @@ The number of release points (RPs) must be specified at `config.yaml/init/agents
 You can write the logic that will be executed at each tick of the simulation for both nodes and agents.
 To specify the node logic, fill `node_logic` in `src/logic/controller/core.py`. For the agent logic, fill `agent_logic` in the same file.
 To add attributes to the node or agent objects, modify `init_nodes` or `init_agents` in `src/logic/controller/init.py`, respectively.
-To change the render of nodes and agents, modify `src/logic/controller/render.py`.
+To change the rendering of nodes and agents, modify `src/logic/controller/render.py`.
 
 ### How to costumize the evaluation metrics and add hooks
 

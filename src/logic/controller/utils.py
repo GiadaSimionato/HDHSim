@@ -278,9 +278,8 @@ def sortByDistance(data):
     return data[data[:,0].argsort(),:]
 
 # N.B. readings not filtered
-def computeTarget(node, policy):
-
-    readings = node.range_and_bearing
+def computeTarget(node, readings, policy):
+    
     params = GlobalConfig.cfg().params
 
     f_readings = readings[np.logical_not(np.logical_and(readings[:,1]==1, readings[:,2]!=2))] # filter readings for only nodes or agents bound
